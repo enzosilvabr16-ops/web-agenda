@@ -1,0 +1,96 @@
+<section class="min-h-screen bg-gradient-to-br from-black via-slate-950 to-blue-950 flex items-center justify-center px-4 py-10">
+  <div class="w-full max-w-md">
+    <div class="rounded-3xl border border-blue-500/30 bg-black/70 p-8 shadow-2xl shadow-blue-500/20 backdrop-blur-xl">
+      <div class="mb-8 text-center">
+        
+        <h1 class="text-3xl font-bold text-white">
+          Criar conta de usuário
+        </h1>
+
+        <p class="mt-2 text-sm text-blue-200/80">
+          Cadastre-se para acessar o web-agenda
+        </p>
+      </div>
+
+      <form [formGroup]="FormCriarConta" (ngSubmit)="criarConta()" class="space-y-5">
+        <div>
+          <label for="nome" class="mb-2 block text-sm font-medium text-blue-100">
+            Nome
+          </label>
+
+          <input
+            formControlName="nome"
+            id="nome"
+            name="nome"
+            type="text"
+            placeholder="Digite seu nome"
+            class="w-full rounded-xl border border-blue-500/30 bg-slate-950/80 px-4 py-3 text-white placeholder:text-slate-500 outline-none transition focus:border-blue-400 focus:ring-2 focus:ring-blue-500/40"
+          />
+        </div>
+
+        <div>
+          <label for="email" class="mb-2 block text-sm font-medium text-blue-100">
+            Email
+          </label>
+
+          <input
+          formControlName="email"
+            id="email"
+            name="email"
+            type="email"
+            placeholder="seuemail@exemplo.com"
+            class="w-full rounded-xl border border-blue-500/30 bg-slate-950/80 px-4 py-3 text-white placeholder:text-slate-500 outline-none transition focus:border-blue-400 focus:ring-2 focus:ring-blue-500/40"
+          />
+        </div>
+
+        <div>
+          <label for="senha" class="mb-2 block text-sm font-medium text-blue-100">
+            Senha
+          </label>
+
+          <input
+            formControlName="senha"
+            id="senha"
+            name="senha"
+            type="password"
+            placeholder="Crie uma senha"
+            class="w-full rounded-xl border border-blue-500/30 bg-slate-950/80 px-4 py-3 text-white placeholder:text-slate-500 outline-none transition focus:border-blue-400 focus:ring-2 focus:ring-blue-500/40"
+          />
+        </div>
+
+        <div>
+          <label for="confirmar-senha" class="mb-2 block text-sm font-medium text-blue-100">
+            Confirmação de senha
+          </label>
+
+          <input
+            formControlName="senhaConfirmacao"
+            id="confirmar-senha"
+            name="confirmarSenha"
+            type="password"
+            placeholder="Confirme sua senha"
+            class="w-full rounded-xl border border-blue-500/30 bg-slate-950/80 px-4 py-3 text-white placeholder:text-slate-500 outline-none transition focus:border-blue-400 focus:ring-2 focus:ring-blue-500/40"
+          />
+        </div>
+
+        <button
+          type="submit"
+          [disabled]="FormCriarConta.invalid"
+          class="w-full rounded-xl bg-gradient-to-r from-blue-700 to-blue-500 px-4 py-3 font-semibold text-white shadow-lg shadow-blue-500/25 transition hover:from-blue-600 hover:to-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-black"
+        >
+          Criar minha conta
+        </button>
+      </form>
+
+      <p class="mt-6 text-center text-sm text-slate-400">
+        Já tem uma conta?
+        <a
+          href="/autenticar"
+          class="font-medium text-blue-400 transition hover:text-blue-300 hover:underline"
+        >
+          Entrar
+        </a>
+      </p>
+    </div>
+  </div>
+</section>
