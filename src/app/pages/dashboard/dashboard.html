@@ -5,15 +5,15 @@
 
       <div class="flex items-center gap-4">
         <span class="hidden text-sm text-blue-100 sm:block">
-          Olá, Sérgio Mendes
+          Olá, {{nomeUsuario()}} - Perfil: {{perfilUsuario()}}
         </span>
 
-        <a
-          href="/autenticar"
+        <button
+          (click)="logout()"
           class="rounded-xl border border-blue-500/30 px-4 py-2 text-sm font-medium text-blue-200 transition hover:bg-blue-500/10 hover:text-white"
         >
           Sair
-        </a>
+      </button>
       </div>
     </div>
   </nav>

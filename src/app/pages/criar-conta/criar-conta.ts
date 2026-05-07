@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
@@ -17,6 +17,10 @@ export class CriarConta {
 
   http = inject(HttpClient);
 
+  //atributos para armazenar msg de sucess e erro
+  mensagemSucesso = signal<string>('');
+  mensagemErro = signal<string>('');
+
     FormCriarConta = new FormGroup({
       nome : new FormControl('', [Validators.required]),
       email : new FormControl('', [Validators.required]),
@@ -26,14 +30,17 @@ export class CriarConta {
 
     criarConta() {
 
+      this.mensagemSucesso.set('');
+      this.mensagemErro.set('');
+
     this.http.post('http://localhost:8082/api/usuario/criar', this.FormCriarConta.value)
      .subscribe({
-      next: (data) => {
-        console.log(data);
+      next: (data: any) => {
+        this.mensagemSucesso.set('Parabéns, ' + data.nome + "! Sua conta de usuário foi criada com sucesso.")
         this.FormCriarConta.reset();
       },
       error: (e) => {
-        console.log(e.error);
+        this.mensagemErro.set(e.error);
       }
      })
     }
